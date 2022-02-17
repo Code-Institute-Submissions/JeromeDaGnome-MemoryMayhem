@@ -19,8 +19,9 @@ $("#btnNext").click(function(){
 
     $("#btn"+mem1).removeClass("btn-lg btn-outline-primary")
     $("#btn"+mem1).addClass("btn-lg btn-primary")
-    setTimeout(()$("#btn"+mem1).removeClass("btn-lg btn-outline-primary"),2000)
-    
+    //setTimeout($("#btn"+mem1).removeClass("btn-lg btn-primary"),2000)
+    //setTimeout($("#btn"+mem1).addClass("btn-lg btn-outline-primary"),2000)
+
 })
 
 $("#btn1").click(function(){
