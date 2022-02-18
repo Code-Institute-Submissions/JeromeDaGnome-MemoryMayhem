@@ -3,3 +3,7 @@ font-family: 'Bebas Neue', cursive;
 .btn-lg:hover {
     background-color: inherit;
 }
+.mobileHoverFix:hover,
+.mobileHoverFix.hover{
+    background-position: 0 0px;
+}
