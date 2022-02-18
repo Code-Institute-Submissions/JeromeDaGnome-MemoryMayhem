@@ -3,6 +3,10 @@ var patternArray = [];
 var numberOfClicks = 0;
 var prevPatternInstance = null;
 
+$("#fakebutton").click(function(){
+    console.log("you clicked test")
+})
+
 $("#guest").click(function(){
 
     level = 1
@@ -88,11 +92,9 @@ function testPattern(){
                 if (numberOfClicks==patternArray.length){
                     level++;
                     numberOfClicks = 0;
-                    $("#user").focus
-                    setTimeout(() => {$("#next").trigger("click")}, 1000);
+                        setTimeout(() => {$("#next").trigger("click")}, 1000);
                 } else {
-                    $("#user").focus
-                    setTimeout(() =>{testPattern()}, 1000);
+                        setTimeout(() =>{testPattern()}, 1000);
                     
                 }
 
@@ -100,12 +102,10 @@ function testPattern(){
                 console.log("You are and always will be a LOSER!");
                 level = 1;
                 numberOfClicks = 0;
-                $("#user").focus
-                setTimeout(() => {$("#next").trigger("click")}, 1000);
+                    setTimeout(() => {$("#next").trigger("click")}, 1000);
             };
             //console.log($(this).attr("id"))
-            $("#user").focus
-        });
+            });
 
 };
 

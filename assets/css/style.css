@@ -1,2 +1,8 @@
 font-family: 'Bebas Neue', cursive;
 
+.memoryButton {
+    padding: 12.5px;
+    border: 1px;
+    border-color:black;
+    border: radius 5%;
+}
