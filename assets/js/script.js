@@ -88,21 +88,23 @@ function testPattern(){
                 if (numberOfClicks==patternArray.length){
                     level++;
                     numberOfClicks = 0;
+                    $("#user").focus
                     setTimeout(() => {$("#next").trigger("click")}, 1000);
                 } else {
-                    
+                    $("#user").focus
                     setTimeout(() =>{testPattern()}, 1000);
+                    
                 }
 
             } else {
                 console.log("You are and always will be a LOSER!");
                 level = 1;
                 numberOfClicks = 0;
+                $("#user").focus
                 setTimeout(() => {$("#next").trigger("click")}, 1000);
             };
             //console.log($(this).attr("id"))
-            $(this).removeClass("btn-outline-primary")
-            $(this).addClass("btn-outline-primary")
+            $("#user").focus
         });
 
 };
