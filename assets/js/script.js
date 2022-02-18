@@ -114,7 +114,8 @@ function startGame(username, location){
 
 function random(number){
     return Math.floor(Math.random()*number) + 1;
-}
+};
+
 $("button").on("touchstart", function(){ 
     $(this).removeClass("mobileHoverFix");
 });
