@@ -101,7 +101,8 @@ function testPattern(){
                 setTimeout(() => {$("#next").trigger("click")}, 1000);
             };
             //console.log($(this).attr("id"))
-            $(this).prop("")
+            $(this).removeClass("btn-outline-primary")
+            $(this).addClass("btn-outline-primary")
         });
 
 };
@@ -116,9 +117,3 @@ function random(number){
     return Math.floor(Math.random()*number) + 1;
 };
 
-$("button").on("touchstart", function(){ 
-    $(this).removeClass("mobileHoverFix");
-});
-$("button").on("touchend", function(){ 
-    $(this).addClass("mobileHoverFix");
-});
