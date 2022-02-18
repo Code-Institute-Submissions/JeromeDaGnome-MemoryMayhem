@@ -1,6 +1,7 @@
 var level = null;
 var patternArray = [];
 var numberOfClicks = 0;
+var prevPatternInstance = null;
 
 $("#guest").click(function(){
 
@@ -31,13 +32,26 @@ $("#next").click(function(){
 
 function setPattern(){
     //creates an array of numbers according to the players level
-    //returns patternArray variable
+    //fills patternArray variable
+    //checks if previous item is same as last and recalulates
     //console.log(level)
     patternArray = [];
     for (var i = 1; i < level+1; i++){
         let patternInstance = random(9)
-        //console.log(patternInstance)
+        if (patternInstance==prevPatternInstance){
+            switch(patternInstance){
+                case 1:
+                    patternInstance = patternInstance+random(8);
+                break;
+                case 9:
+                    patternInstance = patternInstance-random(8);
+                break;
+                default:
+                    patternInstance = patternInstance-1;
+            }
+        }
         patternArray.push(patternInstance)
+        prevPatternInstance = patternInstance
         console.log("Array Set " + patternArray)
     }
 };
@@ -46,24 +60,28 @@ function displayPattern(){
     //highlights the numbers in the playfield according to the pattern set
 
     for (var i = 1; i < level+1; i++){
-        let mem1 = patternArray[i-1]
-        //console.log(mem1) 
-        setTimeout(() => {$("#btn"+mem1).removeClass("btn-lg btn-outline-primary")
-        $("#btn"+mem1).addClass("btn-lg btn-primary")
-        setTimeout(() => {  $("#btn"+mem1).removeClass("btn-lg btn-primary");
-        $("#btn"+mem1).addClass("btn-lg btn-outline-primary")}, 1000);
-        }, 500);
+ 
+            displayPatternWithDelay(i)
+
     }
 
 
 };    
-
+function displayPatternWithDelay(i){
+    let mem1 = patternArray[i-1]
+    //console.log(mem1)
+    setTimeout(() => {$("#btn"+mem1).removeClass("btn-lg btn-outline-primary")
+    $("#btn"+mem1).addClass("btn-lg btn-primary")
+    setTimeout(() => {  $("#btn"+mem1).removeClass("btn-lg btn-primary");
+    $("#btn"+mem1).addClass("btn-lg btn-outline-primary")}, 250);
+    }, 350 * i);
+}
 function testPattern(){
     //validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
     
         $("[id^=btn]").unbind().click(function(){
             numberOfClicks++
-            console.log(numberOfClicks)
+            //console.log(numberOfClicks)
             mem1 = patternArray[numberOfClicks-1]
             if ($(this).attr("id")=="btn"+mem1){
                 console.log("Winner Winner Chicken Dinner");
