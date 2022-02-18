@@ -101,7 +101,7 @@ function testPattern(){
                 setTimeout(() => {$("#next").trigger("click")}, 1000);
             };
             //console.log($(this).attr("id"))
-
+            $(this).prop("")
         });
 
 };

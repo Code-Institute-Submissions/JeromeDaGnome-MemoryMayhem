@@ -1,1 +1,5 @@
 font-family: 'Bebas Neue', cursive;
+
+.btn:hover {
+    background-color: inherit;
+}
