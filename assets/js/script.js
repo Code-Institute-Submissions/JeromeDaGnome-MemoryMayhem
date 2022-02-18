@@ -1,5 +1,6 @@
 var level = null;
 var patternArray = [];
+var numberOfClicks = 0;
 
 $("#guest").click(function(){
 
@@ -20,13 +21,10 @@ $("#user").click(function(){
 $("#next").click(function(){
 
     //let mem1 = random(9)
-    $("#next").prop("disabled", true).prop("innerText", "Round"+level);
-    setPattern()//creates an array of numbers according to the players level
-    displayPattern()//highlights the numbers in the playfield according to the pattern set
-    //testPattern(patternArray)//validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
-
-
-    
+    $("#next").prop("disabled", true).prop("innerText", "Round "+level);
+    setPattern() //creates an array of numbers according to the players level
+    displayPattern() //highlights the numbers in the playfield according to the pattern set
+    testPattern() //validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
 
 })
 
@@ -49,11 +47,12 @@ function displayPattern(){
 
     for (var i = 1; i < level+1; i++){
         let mem1 = patternArray[i-1]
-        console.log(mem1) 
-        $("#btn"+mem1).removeClass("btn-lg btn-outline-primary")
+        //console.log(mem1) 
+        setTimeout(() => {$("#btn"+mem1).removeClass("btn-lg btn-outline-primary")
         $("#btn"+mem1).addClass("btn-lg btn-primary")
         setTimeout(() => {  $("#btn"+mem1).removeClass("btn-lg btn-primary");
         $("#btn"+mem1).addClass("btn-lg btn-outline-primary")}, 1000);
+        }, 500);
     }
 
 
@@ -61,19 +60,31 @@ function displayPattern(){
 
 function testPattern(){
     //validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
-    $("[id^=btn]").unbind().click(function(){
-        
-        if ($(this).attr("id")=="btn"+mem1){
-            console.log("Winner Winner Chicken Dinner");
-            level++;
-            setTimeout(() => {$("#next").trigger("click")}, 1000);
-        } else {
-            console.log("You are and always will be a LOSER!");
-            level = 0;
-        };
-        console.log($(this).attr("id"))
+    
+        $("[id^=btn]").unbind().click(function(){
+            numberOfClicks++
+            console.log(numberOfClicks)
+            mem1 = patternArray[numberOfClicks-1]
+            if ($(this).attr("id")=="btn"+mem1){
+                console.log("Winner Winner Chicken Dinner");
+                if (numberOfClicks==patternArray.length){
+                    level++;
+                    numberOfClicks = 0;
+                    setTimeout(() => {$("#next").trigger("click")}, 1000);
+                } else {
+                    
+                    setTimeout(() =>{testPattern()}, 1000);
+                }
 
-    });
+            } else {
+                console.log("You are and always will be a LOSER!");
+                level = 1;
+                numberOfClicks = 0;
+                setTimeout(() => {$("#next").trigger("click")}, 1000);
+            };
+            //console.log($(this).attr("id"))
+
+        });
 
 };
 
