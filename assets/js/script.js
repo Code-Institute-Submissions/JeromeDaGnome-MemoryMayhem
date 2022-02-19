@@ -12,6 +12,8 @@ $("#guest").click(function(){
 
     level = 1
     $("#next").prop("disabled", false).prop("innerText", "Start Round");
+    mmUsername = "guest"
+    userLocation = "none"
     //startGame("guest","none");
 
 })
