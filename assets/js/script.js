@@ -64,8 +64,9 @@ function displayPattern(){
     //highlights the numbers in the playfield according to the pattern set
 
     for (var i = 1; i < level+1; i++){
- 
-            displayPatternWithDelay(i)
+        
+        
+        displayPatternWithDelay(i)
 
     }
 
@@ -74,12 +75,10 @@ function displayPattern(){
 function displayPatternWithDelay(i){
     let mem1 = patternArray[i-1]
     //console.log(mem1)
-    setTimeout(() => {$("#btn"+mem1).removeClass("btn-lg btn-outline-primary")
-    $("#btn"+mem1).addClass("btn-lg btn-primary")
-    setTimeout(() => {  $("#btn"+mem1).removeClass("btn-lg btn-primary");
-    $("#btn"+mem1).addClass("btn-lg btn-outline-primary")}, 250);
-    }, 350 * i);
+    setTimeout(() => {$("#btn"+mem1).addClass("highlightButton") ;}, 400 * i)
+    setTimeout(() => { $("#btn"+mem1).removeClass("highlightButton");}, 600 * i);
 }
+
 function testPattern(){
     //validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
     

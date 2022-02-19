@@ -1,8 +1,13 @@
-font-family: 'Bebas Neue', cursive;
 
 .memoryButton {
     padding: 12.5px;
-    border: 1px;
+    border-style: solid;
     border-color:black;
-    border: radius 5%;
+    border-radius: 5px;
+    border-width: 2px;
+}
+.highlightButton {
+    border-style: solid;
+    border-width: 10px;
+    border-color: red;
 }
