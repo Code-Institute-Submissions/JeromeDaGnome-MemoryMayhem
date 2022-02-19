@@ -11,3 +11,9 @@
     border-width: 10px;
     border-color: red;
 }
+
+.buttonPressed {
+    border-style: solid;
+    border-width: 10px;
+    border-color: blue;  
+}

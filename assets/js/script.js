@@ -1,11 +1,12 @@
+//global variable setting for use across functions
 var level = null;
 var patternArray = [];
 var numberOfClicks = 0;
 var prevPatternInstance = null;
+var username = null;
+var location = null;
 
-$("#fakebutton").click(function(){
-    console.log("you clicked test")
-})
+//event listener functions 
 
 $("#guest").click(function(){
 
@@ -83,6 +84,7 @@ function testPattern(){
     //validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
     
         $("[id^=btn]").unbind().click(function(){
+            
             numberOfClicks++
             //console.log(numberOfClicks)
             mem1 = patternArray[numberOfClicks-1]
