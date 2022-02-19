@@ -3,8 +3,8 @@ var level = null;
 var patternArray = [];
 var numberOfClicks = 0;
 var prevPatternInstance = null;
-var username = null;
-var location = null;
+var mmUsername = null;
+var userLocation = null;
 
 //event listener functions 
 
