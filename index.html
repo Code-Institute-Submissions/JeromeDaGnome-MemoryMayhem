@@ -16,6 +16,9 @@
 
 <body>
     <div class="d-flex justify-content-center">
+        <img src="assets/img/MMtitle.png" alt="MemoryMayhem">
+    </div>
+    <div class="d-flex justify-content-center">
         <button id="guest" type="button" class=" btn-lg btn-outline-primary">Play as a Guest</button> <button id="user" type="button" class=" btn-lg btn-outline-primary">Play with a Username</button>
     </div>
     <div class="d-flex justify-content-center">
@@ -30,10 +33,17 @@
     <div class="d-flex justify-content-center">
         <button id="next" type="button" class="btn-lg btn-outline-primary" disabled>Select Play as Guest or User above to play!</button>
     </div>
-    <div class="d-flex justify-content-center">
-        <input type="text" id="mmUsername" name="mmUsername">
-        <input type="text" id="userLocation" name="userLocation">
+    <div id="userNameBox" class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
+            <input type="text" id="mmUsername" name="mmUsername" value="Enter Your Name" disabled>
+            <input type="text" id="userLocation" name="userLocation" value="Enter Your Country" disabled>
+        </div>
     </div>
+    <div class="d-flex justify-content-center">
+        <button id="startUserGame" type="button" class="btn-lg btn-outline-primary" disabled>Click After Entering Username</button>
+    </div>
+    
+    
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>

@@ -12,16 +12,24 @@ $("#guest").click(function(){
 
     level = 1
     $("#next").prop("disabled", false).prop("innerText", "Start Round");
-    mmUsername = "guest"
-    userLocation = "none"
+    $("#mmUsername").prop("value","Guest");
+    $("#userLocation").prop("value","None");
+    mmUsername = "guest";
+    userLocation = "none";
+    $("#startUserGame").prop("disabled",true).prop("innerText","Good Luck "+mmUsername);
     //startGame("guest","none");
 
 })
 
 $("#user").click(function(){
 
-    level = 1
-    $("#next").prop("disabled", false).prop("innerText", "Start Round");
+    level = 1;
+    $("#startUserGame").prop("disabled",false).prop("innerText","Click After Entering Username");
+    $("#next").prop("disabled",true);
+    $("#mmUsername").prop("value","Enter Your Name");
+    $("#userLocation").prop("value","Enter Your Country");
+    enterUnameCountry();
+    
     //startGame("John Doe","USA");
     
 })
@@ -30,12 +38,43 @@ $("#next").click(function(){
 
     //let mem1 = random(9)
     $("#next").prop("disabled", true).prop("innerText", "Round "+level);
-    setPattern() //creates an array of numbers according to the players level
-    displayPattern() //highlights the numbers in the playfield according to the pattern set
-    testPattern() //validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
+    setPattern(); //creates an array of numbers according to the players level
+    displayPattern(); //highlights the numbers in the playfield according to the pattern set
+    testPattern(); //validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
 
 })
 
+$("#startUserGame").click(function(){
+    if ($("#mmUsername").prop("value")=="Enter Your Name"){
+        $("#mmUsername").prop("value","Please Enter a Name");
+        $("startUserGame").trigger("click");
+    } else if ($("#mmUsername").prop("value")=="Please Enter a Name") {
+        $("#mmUsername").prop("value","Enter Your Name");
+        $("startUserGame").trigger("click");
+    } else {
+        mmUsername = $("#mmUsername").prop("value");
+        $("#mmUsername").prop("disabled",true).removeClass("superHighlight");
+        $("#userLocation").prop("disabled",false);
+        $("startUserGame").prop("innerText","Click After Entering Country")
+    }
+    if ($("#userLocation").prop("value")=="Enter Your Country"){
+        $("#userLocation").prop("value","Please Enter a Country");
+        $("startUserGame").trigger("click");
+    } else if ($("#userLocation").prop("value")=="Please Enter a Country"){
+        $("#userLocation").prop("value","Enter Your Country");
+        $("startUserGame").trigger("click");
+    } else {
+        userLocation = $("#userLocation").prop("value");
+        $("#userLocation").prop("disabled",true).removeClass("superHighlight");
+        $("#startUserGame").prop("disabled",true).prop("innerText","Good Luck "+mmUsername);
+        $("#next").prop("disabled", false).prop("innerText", "Start Round");
+    }  
+})
+
+function enterUnameCountry(){
+    $("#mmUsername").prop("disabled",false).addClass("superHighlight");
+    $("#userLocation").addClass("superHighlight");
+}
 
 function setPattern(){
     //creates an array of numbers according to the players level
@@ -105,10 +144,11 @@ function testPattern(){
                 console.log("You are and always will be a LOSER!");
                 level = 1;
                 numberOfClicks = 0;
-                    setTimeout(() => {$("#next").trigger("click")}, 1000);
+                    $("#next").prop("disabled",false).prop("innerText","You Lost! Start Round Again?");
+                    return;
             };
             //console.log($(this).attr("id"))
-            });
+        });
 
 };
 

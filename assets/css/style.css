@@ -17,3 +17,9 @@
     border-width: 10px;
     border-color: blue;  
 }
+
+.superHighlight {
+    border-style: solid;
+    border-width: 10px;
+    border-color: violet;
+}
