@@ -4,6 +4,7 @@ var patternArray = [];
 var numberOfClicks = 0;
 var prevPatternInstance = null;
 var mmUsername = null;
+var winnerLoserMessage;
 //var userLocation = null;
 
 //event listener functions 
@@ -41,6 +42,7 @@ $("#next").click(function(){
     setPattern(); //creates an array of numbers according to the players level
     displayPattern(); //highlights the numbers in the playfield according to the pattern set
     testPattern(); //validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
+    writeHighScoreTable(); //Writes message to table header and rewrites table with any new scores
 
 })
 
@@ -72,6 +74,8 @@ $("#startUserGame").click(function(){
     //    $("#next").prop("disabled", false).prop("innerText", "Start Round");
     //}  
 })
+
+//game running functions
 
 function enterUnameCountry(){
     $("#mmUsername").prop("disabled",false).addClass("superHighlight");
@@ -144,6 +148,7 @@ function testPattern(){
 
             } else {
                 console.log("You are and always will be a LOSER!");
+                checkHighScores();                        
                 level = 1;
                 numberOfClicks = 0;
                     $("#next").prop("disabled",false).prop("innerText","You Lost! Start Round Again?");
@@ -154,12 +159,41 @@ function testPattern(){
 
 };
 
-function startGame(username, location){
-
-    
+function checkHighScores(){
+    if (level=>localStorage.getItem("mmHighScore1"){
+        localStorage.setItem("mmHighScore5")=localStorage.getItem("mmHighScore4");
+        localStorage.setItem("mmHighScore4")=localStorage.getItem("mmHighScore3");
+        localStorage.setItem("mmHighScore3")=localStorage.getItem("mmHighScore2");
+        localStorage.setItem("mmHighScore2")=localStorage.getItem("mmHighScore1");
+        localStorage.setItem("mmHighScore1")=level;
+        winnerLoserMessage = "You beat your top score with a level of "+level+"!";
+    } else if (level<localStorage.getItem("mmHighScore1")&&level>localStorage.getItem("mmHighScore2")){
+        localStorage.setItem("mmHighScore5")=localStorage.getItem("mmHighScore4");
+        localStorage.setItem("mmHighScore4")=localStorage.getItem("mmHighScore3");
+        localStorage.setItem("mmHighScore3")=localStorage.getItem("mmHighScore2");
+        localStorage.setItem("mmHighScore2")=level;
+        winnerLoserMessage = "You beat your Number 2 score with a level of "+level+"!";
+    } else if (level<localStorage.getItem("mmHighScore2")&&level>localStorage.getItem("mmHighScore3")){
+        localStorage.setItem("mmHighScore5")=localStorage.getItem("mmHighScore4");
+        localStorage.setItem("mmHighScore4")=localStorage.getItem("mmHighScore3");
+        localStorage.setItem("mmHighScore3")=level;
+        winnerLoserMessage = "You beat your Number 3 score with a level of "+level+"!";
+    } else if (level<localStorage.getItem("mmHighScore3")&&level>localStorage.getItem("mmHighScore4")){
+        localStorage.setItem("mmHighScore5")=localStorage.getItem("mmHighScore4");
+        localStorage.setItem("mmHighScore4")=level;
+        winnerLoserMessage = "You beat your Number 4 score with a level of "+level+"!";
+    } else if (level<localStorage.getItem("mmHighScore4")&&level>localStorage.getItem("mmHighScore5")){
+        localStorage.setItem("mmHighScore5")=level;
+        winnerLoserMessage = "You beat your Number 5 score with a level of "+level+"!";
+    } else {
+        winnerLoserMessage = "You couldn't even beat your Number 5 score!"
+    }
 
 }
 
+function writeHighScoreTable(){
+    
+}
 function random(number){
     return Math.floor(Math.random()*number) + 1;
 };
