@@ -4,7 +4,7 @@ var patternArray = [];
 var numberOfClicks = 0;
 var prevPatternInstance = null;
 var mmUsername = null;
-var userLocation = null;
+//var userLocation = null;
 
 //event listener functions 
 
@@ -13,9 +13,9 @@ $("#guest").click(function(){
     level = 1
     $("#next").prop("disabled", false).prop("innerText", "Start Round");
     $("#mmUsername").prop("value","Guest");
-    $("#userLocation").prop("value","None");
+    //$("#userLocation").prop("value","None");
     mmUsername = "guest";
-    userLocation = "none";
+    //userLocation = "none";
     $("#startUserGame").prop("disabled",true).prop("innerText","Good Luck "+mmUsername);
     //startGame("guest","none");
 
@@ -27,7 +27,7 @@ $("#user").click(function(){
     $("#startUserGame").prop("disabled",false).prop("innerText","Click After Entering Username");
     $("#next").prop("disabled",true);
     $("#mmUsername").prop("value","Enter Your Name");
-    $("#userLocation").prop("value","Enter Your Country");
+    //$("#userLocation").prop("value","Enter Your Country");
     enterUnameCountry();
     
     //startGame("John Doe","USA");
@@ -54,26 +54,28 @@ $("#startUserGame").click(function(){
     } else {
         mmUsername = $("#mmUsername").prop("value");
         $("#mmUsername").prop("disabled",true).removeClass("superHighlight");
-        $("#userLocation").prop("disabled",false);
-        $("startUserGame").prop("innerText","Click After Entering Country")
-    }
-    if ($("#userLocation").prop("value")=="Enter Your Country"){
-        $("#userLocation").prop("value","Please Enter a Country");
-        $("startUserGame").trigger("click");
-    } else if ($("#userLocation").prop("value")=="Please Enter a Country"){
-        $("#userLocation").prop("value","Enter Your Country");
-        $("startUserGame").trigger("click");
-    } else {
-        userLocation = $("#userLocation").prop("value");
-        $("#userLocation").prop("disabled",true).removeClass("superHighlight");
         $("#startUserGame").prop("disabled",true).prop("innerText","Good Luck "+mmUsername);
         $("#next").prop("disabled", false).prop("innerText", "Start Round");
-    }  
+    //    $("#userLocation").prop("disabled",false);
+    //    $("startUserGame").prop("innerText","Click After Entering Country")
+    }
+    //if ($("#userLocation").prop("value")=="Enter Your Country"){
+    //    $("#userLocation").prop("value","Please Enter a Country");
+    //    $("startUserGame").trigger("click");
+   // } else if ($("#userLocation").prop("value")=="Please Enter a Country"){
+    //    $("#userLocation").prop("value","Enter Your Country");
+    //    $("startUserGame").trigger("click");
+    //} else {
+    //    userLocation = $("#userLocation").prop("value");
+    //    $("#userLocation").prop("disabled",true).removeClass("superHighlight");
+    //    $("#startUserGame").prop("disabled",true).prop("innerText","Good Luck "+mmUsername);
+    //    $("#next").prop("disabled", false).prop("innerText", "Start Round");
+    //}  
 })
 
 function enterUnameCountry(){
     $("#mmUsername").prop("disabled",false).addClass("superHighlight");
-    $("#userLocation").addClass("superHighlight");
+    //$("#userLocation").addClass("superHighlight");
 }
 
 function setPattern(){
