@@ -7,6 +7,8 @@ var mmUsername = null;
 var winnerLoserMessage;
 //var userLocation = null;
 firstTimePlayed();
+writeHighScoreTable();
+
 //event listener functions 
 
 $("#guest").click(function(){
@@ -57,7 +59,7 @@ $("#startUserGame").click(function(){
         mmUsername = $("#mmUsername").prop("value");
         $("#mmUsername").prop("disabled",true).removeClass("superHighlight");
         $("#startUserGame").prop("disabled",true).prop("innerText","Good Luck "+mmUsername);
-        localStorage.setItem("localMMUsername") = mmUsername;
+        localStorage.setItem("localMMUsername", mmUsername);
         $("#next").prop("disabled", false).prop("innerText", "Start Round");
     //    $("#userLocation").prop("disabled",false);
     //    $("startUserGame").prop("innerText","Click After Entering Country")
@@ -161,7 +163,7 @@ function testPattern(){
 };
 
 function checkHighScores(){
-    if (level=>localStorage.getItem("mmHighScore1")){
+    if (level=localStorage.getItem("mmHighScore1")||level>localStorage.getItem("mmHighScore1")){
         localStorage.setItem("mmHighScore5",localStorage.getItem("mmHighScore4"));
         localStorage.setItem("mmHighScore4",localStorage.getItem("mmHighScore3"));
         localStorage.setItem("mmHighScore3",localStorage.getItem("mmHighScore2"));
@@ -193,20 +195,26 @@ function checkHighScores(){
 }
 
 function writeHighScoreTable(){
+    $("#mmHS1").prop("innerText","1. "+localStorage.getItem("localMMUsername")+".........."+localStorage.getItem("mmHighScore1"));
+    $("#mmHS2").prop("innerText","2. "+localStorage.getItem("localMMUsername")+".........."+localStorage.getItem("mmHighScore2"));
+    $("#mmHS3").prop("innerText","3. "+localStorage.getItem("localMMUsername")+".........."+localStorage.getItem("mmHighScore3"));
+    $("#mmHS4").prop("innerText","4. "+localStorage.getItem("localMMUsername")+".........."+localStorage.getItem("mmHighScore4"));
+    $("#mmHS5").prop("innerText","5. "+localStorage.getItem("localMMUsername")+".........."+localStorage.getItem("mmHighScore5"));
     
 }
 function random(number){
     return Math.floor(Math.random()*number) + 1;
 };
 function firstTimePlayed(){
-    if (localStorage.getItem("localMMUserName")==""){
-        localStorage.setItem("localMMUserName") = "guest";
-        localStorage.setItem("mmHighScore1")=0;
-        localStorage.setItem("mmHighScore2")=0;
-        localStorage.setItem("mmHighScore3")=0;
-        localStorage.setItem("mmHighScore4")=0;
-        localStorage.setItem("mmHighScore5")=0;
-        writeHighScoreTable();
+    if (localStorage.getItem("localMMUserName")==null){
+        localStorage.setItem("localMMUserName","guest");
+        mmUsername="guest"
+        localStorage.setItem("mmHighScore1","0");
+        localStorage.setItem("mmHighScore2","0");
+        localStorage.setItem("mmHighScore3","0");
+        localStorage.setItem("mmHighScore4","0");
+        localStorage.setItem("mmHighScore5","0");
+        
     }
 
 
