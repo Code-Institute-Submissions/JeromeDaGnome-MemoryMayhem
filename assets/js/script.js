@@ -1,11 +1,15 @@
 //global variable setting for use across functions
-var level = null;
+var level = 1;
 var patternArray = [];
 var numberOfClicks = 0;
 var prevPatternInstance = null;
 var mmUsername = null;
 var winnerLoserMessage;
 //var userLocation = null;
+//localStorage.clear() //clear local variables for debug purposes
+console.log(localStorage.getItem("localMMUsername"))
+console.log(localStorage.getItem("mmHighScore1"))
+console.log(+localStorage.getItem("mmHighScore1")+10)
 firstTimePlayed();
 writeHighScoreTable();
 
@@ -51,10 +55,10 @@ $("#next").click(function(){
 $("#startUserGame").click(function(){
     if ($("#mmUsername").prop("value")=="Enter Your Name"){
         $("#mmUsername").prop("value","Please Enter a Name");
-        $("startUserGame").trigger("click");
+        $("#startUserGame").trigger("click");
     } else if ($("#mmUsername").prop("value")=="Please Enter a Name") {
         $("#mmUsername").prop("value","Enter Your Name");
-        $("startUserGame").trigger("click");
+        $("#startUserGame").trigger("click");
     } else {
         mmUsername = $("#mmUsername").prop("value");
         $("#mmUsername").prop("disabled",true).removeClass("superHighlight");
@@ -129,12 +133,17 @@ function displayPatternWithDelay(i){
     setTimeout(() => {$("#btn"+mem1).addClass("highlightButton") ;}, 400 * i)
     setTimeout(() => { $("#btn"+mem1).removeClass("highlightButton");}, 600 * i);
 }
-
+function buttonPress(pressedButton){
+    $("#btn"+pressedButton).addClass("buttonPressed")
+    //setTimeout(() => {$("#btn"+pressedButton).addClass("buttonPressed") ;}, 400)
+    setTimeout(() => { $("#btn"+pressedButton).removeClass("buttonPressed");}, 300);
+}
 function testPattern(){
     //validates that each click follows the pattern and continues the game if pattern is matched or ends the game if pattern is not matched
     
         $("[id^=btn]").unbind().click(function(){
-            
+            let pressedButton = $(this).prop("id").charAt(3)
+            buttonPress(pressedButton)
             numberOfClicks++
             //console.log(numberOfClicks)
             mem1 = patternArray[numberOfClicks-1]
@@ -163,29 +172,29 @@ function testPattern(){
 };
 
 function checkHighScores(){
-    if (level=localStorage.getItem("mmHighScore1")||level>localStorage.getItem("mmHighScore1")){
+    if (level=+localStorage.getItem("mmHighScore1")||level>+localStorage.getItem("mmHighScore1")){
         localStorage.setItem("mmHighScore5",localStorage.getItem("mmHighScore4"));
         localStorage.setItem("mmHighScore4",localStorage.getItem("mmHighScore3"));
         localStorage.setItem("mmHighScore3",localStorage.getItem("mmHighScore2"));
         localStorage.setItem("mmHighScore2",localStorage.getItem("mmHighScore1"));
         localStorage.setItem("mmHighScore1",level);
         winnerLoserMessage = "You beat your top score with a level of "+level+"!";
-    } else if (level<localStorage.getItem("mmHighScore1")&&level>localStorage.getItem("mmHighScore2")){
+    } else if (level<+localStorage.getItem("mmHighScore1")&&level>+localStorage.getItem("mmHighScore2")){
         localStorage.setItem("mmHighScore5",localStorage.getItem("mmHighScore4"));
         localStorage.setItem("mmHighScore4",localStorage.getItem("mmHighScore3"));
         localStorage.setItem("mmHighScore3",localStorage.getItem("mmHighScore2"));
         localStorage.setItem("mmHighScore2",level);
         winnerLoserMessage = "You beat your Number 2 score with a level of "+level+"!";
-    } else if (level<localStorage.getItem("mmHighScore2")&&level>localStorage.getItem("mmHighScore3")){
+    } else if (level<+localStorage.getItem("mmHighScore2")&&level>+localStorage.getItem("mmHighScore3")){
         localStorage.setItem("mmHighScore5",localStorage.getItem("mmHighScore4"));
         localStorage.setItem("mmHighScore4",localStorage.getItem("mmHighScore3"));
         localStorage.setItem("mmHighScore3",level);
         winnerLoserMessage = "You beat your Number 3 score with a level of "+level+"!";
-    } else if (level<localStorage.getItem("mmHighScore3")&&level>localStorage.getItem("mmHighScore4")){
+    } else if (level<+localStorage.getItem("mmHighScore3")&&level>+localStorage.getItem("mmHighScore4")){
         localStorage.setItem("mmHighScore5",localStorage.getItem("mmHighScore4"));
         localStorage.setItem("mmHighScore4",level);
         winnerLoserMessage = "You beat your Number 4 score with a level of "+level+"!";
-    } else if (level<localStorage.getItem("mmHighScore4")&&level>localStorage.getItem("mmHighScore5")){
+    } else if (level<+localStorage.getItem("mmHighScore4")&&level>+localStorage.getItem("mmHighScore5")){
         localStorage.setItem("mmHighScore5",level);
         winnerLoserMessage = "You beat your Number 5 score with a level of "+level+"!";
     } else {
@@ -200,7 +209,7 @@ function writeHighScoreTable(){
     $("#mmHS3").prop("innerText","3. "+localStorage.getItem("localMMUsername")+".........."+localStorage.getItem("mmHighScore3"));
     $("#mmHS4").prop("innerText","4. "+localStorage.getItem("localMMUsername")+".........."+localStorage.getItem("mmHighScore4"));
     $("#mmHS5").prop("innerText","5. "+localStorage.getItem("localMMUsername")+".........."+localStorage.getItem("mmHighScore5"));
-    
+    $("#winnerLoserMessage").prop("innerText",winnerLoserMessage)
 }
 function random(number){
     return Math.floor(Math.random()*number) + 1;
@@ -209,11 +218,11 @@ function firstTimePlayed(){
     if (localStorage.getItem("localMMUserName")==null){
         localStorage.setItem("localMMUserName","guest");
         mmUsername="guest"
-        localStorage.setItem("mmHighScore1","0");
-        localStorage.setItem("mmHighScore2","0");
-        localStorage.setItem("mmHighScore3","0");
-        localStorage.setItem("mmHighScore4","0");
-        localStorage.setItem("mmHighScore5","0");
+        localStorage.setItem("mmHighScore1",0);
+        localStorage.setItem("mmHighScore2",0);
+        localStorage.setItem("mmHighScore3",0);
+        localStorage.setItem("mmHighScore4",0);
+        localStorage.setItem("mmHighScore5",0);
         
     }
 
