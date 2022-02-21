@@ -160,7 +160,7 @@ function testPattern(){
 };
 
 function checkHighScores(){
-    if (level=>localStorage.getItem("mmHighScore1"){
+    if (level=>localStorage.getItem("mmHighScore1")){
         localStorage.setItem("mmHighScore5")=localStorage.getItem("mmHighScore4");
         localStorage.setItem("mmHighScore4")=localStorage.getItem("mmHighScore3");
         localStorage.setItem("mmHighScore3")=localStorage.getItem("mmHighScore2");
