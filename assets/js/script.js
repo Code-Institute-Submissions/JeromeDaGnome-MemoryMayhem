@@ -162,29 +162,29 @@ function testPattern(){
 
 function checkHighScores(){
     if (level=>localStorage.getItem("mmHighScore1")){
-        localStorage.setItem("mmHighScore5")=localStorage.getItem("mmHighScore4");
-        localStorage.setItem("mmHighScore4")=localStorage.getItem("mmHighScore3");
-        localStorage.setItem("mmHighScore3")=localStorage.getItem("mmHighScore2");
-        localStorage.setItem("mmHighScore2")=localStorage.getItem("mmHighScore1");
-        localStorage.setItem("mmHighScore1")=level;
+        localStorage.setItem("mmHighScore5",localStorage.getItem("mmHighScore4");
+        localStorage.setItem("mmHighScore4",localStorage.getItem("mmHighScore3");
+        localStorage.setItem("mmHighScore3",localStorage.getItem("mmHighScore2");
+        localStorage.setItem("mmHighScore2",localStorage.getItem("mmHighScore1");
+        localStorage.setItem("mmHighScore1",level);
         winnerLoserMessage = "You beat your top score with a level of "+level+"!";
     } else if (level<localStorage.getItem("mmHighScore1")&&level>localStorage.getItem("mmHighScore2")){
-        localStorage.setItem("mmHighScore5")=localStorage.getItem("mmHighScore4");
-        localStorage.setItem("mmHighScore4")=localStorage.getItem("mmHighScore3");
-        localStorage.setItem("mmHighScore3")=localStorage.getItem("mmHighScore2");
-        localStorage.setItem("mmHighScore2")=level;
+        localStorage.setItem("mmHighScore5",localStorage.getItem("mmHighScore4");
+        localStorage.setItem("mmHighScore4",localStorage.getItem("mmHighScore3");
+        localStorage.setItem("mmHighScore3",localStorage.getItem("mmHighScore2");
+        localStorage.setItem("mmHighScore2",level);
         winnerLoserMessage = "You beat your Number 2 score with a level of "+level+"!";
     } else if (level<localStorage.getItem("mmHighScore2")&&level>localStorage.getItem("mmHighScore3")){
-        localStorage.setItem("mmHighScore5")=localStorage.getItem("mmHighScore4");
-        localStorage.setItem("mmHighScore4")=localStorage.getItem("mmHighScore3");
-        localStorage.setItem("mmHighScore3")=level;
+        localStorage.setItem("mmHighScore5",localStorage.getItem("mmHighScore4");
+        localStorage.setItem("mmHighScore4",localStorage.getItem("mmHighScore3");
+        localStorage.setItem("mmHighScore3",level);
         winnerLoserMessage = "You beat your Number 3 score with a level of "+level+"!";
     } else if (level<localStorage.getItem("mmHighScore3")&&level>localStorage.getItem("mmHighScore4")){
-        localStorage.setItem("mmHighScore5")=localStorage.getItem("mmHighScore4");
-        localStorage.setItem("mmHighScore4")=level;
+        localStorage.setItem("mmHighScore5",localStorage.getItem("mmHighScore4");
+        localStorage.setItem("mmHighScore4",level);
         winnerLoserMessage = "You beat your Number 4 score with a level of "+level+"!";
     } else if (level<localStorage.getItem("mmHighScore4")&&level>localStorage.getItem("mmHighScore5")){
-        localStorage.setItem("mmHighScore5")=level;
+        localStorage.setItem("mmHighScore5",level);
         winnerLoserMessage = "You beat your Number 5 score with a level of "+level+"!";
     } else {
         winnerLoserMessage = "You couldn't even beat your Number 5 score!"
