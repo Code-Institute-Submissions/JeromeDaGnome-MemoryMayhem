@@ -57,6 +57,7 @@ $("#startUserGame").click(function(){
         mmUsername = $("#mmUsername").prop("value");
         $("#mmUsername").prop("disabled",true).removeClass("superHighlight");
         $("#startUserGame").prop("disabled",true).prop("innerText","Good Luck "+mmUsername);
+        localStorage.setItem("localMMUsername") = mmUsername;
         $("#next").prop("disabled", false).prop("innerText", "Start Round");
     //    $("#userLocation").prop("disabled",false);
     //    $("startUserGame").prop("innerText","Click After Entering Country")
@@ -197,4 +198,16 @@ function writeHighScoreTable(){
 function random(number){
     return Math.floor(Math.random()*number) + 1;
 };
+function firstTimePlayed(){
+    if (localStorage.getItem("localMMUserName")==""){
+        localStorage.setItem("localMMUserName") = "guest";
+        localStorage.setItem("mmHighScore1")=0;
+        localStorage.setItem("mmHighScore2")=0;
+        localStorage.setItem("mmHighScore3")=0;
+        localStorage.setItem("mmHighScore4")=0;
+        localStorage.setItem("mmHighScore5")=0;
+        writeHighScoreTable();
+    }
 
+
+}
