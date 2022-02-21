@@ -21,6 +21,7 @@
     <div class="d-flex justify-content-center">
         <button id="guest" type="button" class=" btn-lg btn-outline-primary">Play as a Guest</button> <button id="user" type="button" class=" btn-lg btn-outline-primary">Play with a Username</button>
     </div>
+    <div id="hRule" class="hRule">-</div>
     <div class="d-flex justify-content-center">
         <img id="btn7" src="assets/img/7_straight.png" class="memoryButton"><img id="btn8" src="assets/img/8_straight.png" class="memoryButton"><img id="btn9" src="assets/img/9_straight.png" class="memoryButton">
     </div>
@@ -30,26 +31,30 @@
     <div class="d-flex justify-content-center">
         <img id="btn1" src="assets/img/1_straight.png" class="memoryButton"><img id="btn2" src="assets/img/2_straight.png" class="memoryButton"><img id="btn3" src="assets/img/3_straight.png" class="memoryButton">
     </div>
+    <div id="hRule" class="hRule">-</div>
     <div class="d-flex justify-content-center">
         <button id="next" type="button" class="btn-lg btn-outline-primary" disabled>Select Play as Guest or User above to play!</button>
     </div>
+    <div id="hRule" class="hRule">-</div>
     <div id="userNameBox" class="d-flex justify-content-center">
         <div class="d-flex justify-content-center">
             <input type="text" id="mmUsername" name="mmUsername" value="Enter Your Name" disabled>
             <!--<input type="text" id="userLocation" name="userLocation" value="Enter Your Country" disabled>-->
         </div>
+        <div class="d-flex justify-content-center">
+            <button id="startUserGame" type="button" class="btn-lg btn-outline-primary" disabled>Enter Username</button>
+        </div>
     </div>
-    <div class="d-flex justify-content-center">
-        <button id="startUserGame" type="button" class="btn-lg btn-outline-primary" disabled>Click After Entering Username</button>
-    </div>
-    <div id="highScoreList" style="width:400px" class="d-flex justify-content-center p-5 text-lightgreen bg-dark rounded-3">
-        <h2 class="justify-content-center">Your High Scores!</h2>
-        <span id="mmHS1"></span>
-        <span id="mmHS2"></span>
-        <span id="mmHS3"></span>
-        <span id="mmHS4"></span>
-        <span id="mmHS5"></span>
-        <span id="winnerLoserMessage"></span>
+
+    <div id="hRule" class="hRule">-</div>
+    <div id="highScoreList" class="mx-auto highScoreListBox" >
+        <h2 class="highScoreList">Your High Scores!</h2>
+        <div id="mmHS1" class="highScoreList">1</div>
+        <div id="mmHS2" class="highScoreList">2</div>
+        <div id="mmHS3" class="highScoreList">3</div>
+        <div id="mmHS4" class="highScoreList">4</div>
+        <div id="mmHS5" class="highScoreList">5</div>
+        <h2 id="winnerLoserMessage" class="highScoreList">Good Luck!</h2>
     </div>
     
     <script src="assets/js/jquery-3.6.0.min.js"></script>
