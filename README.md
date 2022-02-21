@@ -196,6 +196,7 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 ### Code
 
 -   [Bootstrap4](https://getbootstrap.com/docs/4.4/getting-started/introduction/): Bootstrap Library used throughout the project mainly to make site responsive using the Bootstrap Grid System.
+-   Google for the numerous new coding concepts that used throughout this project that I had to lookup online from so many various sources it would be impossible to list here.
 
 ### Content
 
