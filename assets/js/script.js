@@ -6,11 +6,11 @@ var prevPatternInstance = null;
 var mmUsername = null;
 var winnerLoserMessage;
 //var userLocation = null;
-
+firstTimePlayed();
 //event listener functions 
 
 $("#guest").click(function(){
-    console.log("test")
+    
     level = 1
     $("#next").prop("disabled", false).prop("innerText", "Start Round");
     $("#mmUsername").prop("value","Guest");
